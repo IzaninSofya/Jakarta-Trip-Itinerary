@@ -5,539 +5,147 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jakarta Itinerary — Jun 24–28, 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- Optional shared-sync engine. Only used if you fill in the CONFIG block in the script below. -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
-    --paper:#efe9df;
-    --paper-deep:#e6ded0;
-    --ink:#241f1a;
-    --ink-soft:#5b5246;
-    --ink-faint:#8c8273;
-    --line:#cdc3b0;
-    --bluebird:#1f5c8a;
-    --bluebird-deep:#163f5e;
-    --bluebird-tint:#dde9f0;
-    --terracotta:#b5512f;
-    --terracotta-tint:#f0ded4;
-    --moss:#5a6e4f;
-    --moss-tint:#e1e6da;
-    --card:#fffdf9;
-    --radius:3px;
+    --paper:#efe9df;--paper-deep:#e6ded0;--ink:#241f1a;--ink-soft:#5b5246;--ink-faint:#8c8273;
+    --line:#cdc3b0;--bluebird:#1f5c8a;--bluebird-deep:#163f5e;--bluebird-tint:#dde9f0;
+    --terracotta:#b5512f;--terracotta-tint:#f0ded4;--moss:#5a6e4f;--moss-tint:#e1e6da;--card:#fffdf9;--radius:3px;
   }
-
   *{margin:0;padding:0;box-sizing:border-box}
-
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(36,31,26,0.06) 1px, transparent 0);
-    background-size:22px 22px;
-  }
-
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;background-image:radial-gradient(circle at 1px 1px, rgba(36,31,26,0.06) 1px, transparent 0);background-size:22px 22px}
   .wrap{max-width:920px;margin:0 auto;padding:0 24px 120px}
-
-  /* ===== HEADER ===== */
-  header{
-    padding:64px 0 40px;
-    border-bottom:1px solid var(--line);
-    margin-bottom:48px;
-  }
-  .eyebrow{
-    font-family:'Space Mono',monospace;
-    font-size:11px;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    color:var(--bluebird-deep);
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:18px;
-  }
-  .eyebrow::before{
-    content:'';
-    width:18px;height:1px;
-    background:var(--bluebird-deep);
-  }
-  h1{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    font-size:clamp(38px,6vw,64px);
-    line-height:1.02;
-    letter-spacing:-0.01em;
-    margin-bottom:18px;
-  }
-  h1 em{
-    font-style:italic;
-    font-weight:400;
-    color:var(--bluebird);
-  }
-  .sub{
-    font-size:16px;
-    color:var(--ink-soft);
-    max-width:560px;
-  }
-  .header-meta{
-    display:flex;
-    gap:28px;
-    margin-top:32px;
-    flex-wrap:wrap;
-  }
-  .meta-chip{
-    font-family:'Space Mono',monospace;
-    font-size:12px;
-    color:var(--ink-soft);
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-  }
-  .meta-chip b{
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:14px;
-    color:var(--ink);
-  }
-
-  /* ===== COLLAB BAR ===== */
-  .collab-bar{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    flex-wrap:wrap;
-    margin-top:30px;
-    padding-top:24px;
-    border-top:1px dashed var(--line);
-  }
-  .me-pill{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:30px;
-    padding:6px 14px 6px 7px;
-    cursor:pointer;
-    font-size:13px;
-    transition:border-color .15s;
-  }
+  header{padding:64px 0 40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--bluebird-deep);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .eyebrow::before{content:'';width:18px;height:1px;background:var(--bluebird-deep)}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(38px,6vw,64px);line-height:1.02;letter-spacing:-0.01em;margin-bottom:18px}
+  h1 em{font-style:italic;font-weight:400;color:var(--bluebird)}
+  .sub{font-size:16px;color:var(--ink-soft);max-width:560px}
+  .header-meta{display:flex;gap:28px;margin-top:32px;flex-wrap:wrap}
+  .meta-chip{font-family:'Space Mono',monospace;font-size:12px;color:var(--ink-soft);display:flex;flex-direction:column;gap:4px}
+  .meta-chip b{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:var(--ink)}
+  .collab-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px dashed var(--line)}
+  .me-pill{display:inline-flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:30px;padding:6px 14px 6px 7px;cursor:pointer;font-size:13px;transition:border-color .15s}
   .me-pill:hover{border-color:var(--bluebird)}
-  .me-avatar{
-    width:24px;height:24px;border-radius:50%;
-    background:var(--bluebird);color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Space Mono',monospace;font-size:10px;font-weight:700;
-  }
+  .me-avatar{width:24px;height:24px;border-radius:50%;background:var(--bluebird);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;font-weight:700}
   .me-pill .me-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
   .me-pill .me-name{font-weight:600}
-  .mode-tag{
-    font-family:'Space Mono',monospace;
-    font-size:10.5px;
-    letter-spacing:.04em;
-    color:var(--ink-faint);
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-  }
+  .mode-tag{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--ink-faint);display:inline-flex;align-items:center;gap:7px}
   .mode-dot{width:7px;height:7px;border-radius:50%;background:var(--ink-faint);flex-shrink:0}
   .mode-dot.shared{background:var(--moss)}
   .mode-dot.local{background:var(--terracotta)}
-
-  /* ===== INTRO NOTE ===== */
-  .intro{
-    margin-bottom:44px;
-    padding:18px 20px;
-    background:var(--bluebird-tint);
-    border:1px solid #b9d2e2;
-    border-radius:var(--radius);
-    font-size:13.5px;
-    color:var(--bluebird-deep);
-    max-width:640px;
-  }
-  .intro b{
-    display:block;font-family:'Space Mono',monospace;font-size:11px;
-    letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;
-  }
-
-  /* ===== DAY BLOCK ===== */
-  .day{
-    position:relative;
-    margin-bottom:6px;
-    display:grid;
-    grid-template-columns:120px 1fr;
-    gap:0;
-  }
-  .day-rail{
-    position:relative;
-    padding-top:6px;
-  }
-  .day-num{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    font-size:15px;
-    color:var(--ink-faint);
-  }
-  .day-date{
-    font-family:'Space Mono',monospace;
-    font-size:11px;
-    color:var(--ink-faint);
-    margin-top:2px;
-  }
-  .day-line{
-    position:absolute;
-    top:34px;
-    bottom:-40px;
-    left:6px;
-    width:1px;
-    background:var(--line);
-  }
+  .intro{margin-bottom:44px;padding:18px 20px;background:var(--bluebird-tint);border:1px solid #b9d2e2;border-radius:var(--radius);font-size:13.5px;color:var(--bluebird-deep);max-width:660px}
+  .intro b{display:block;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+  .day{position:relative;margin-bottom:6px;display:grid;grid-template-columns:120px 1fr;gap:0}
+  .day-rail{position:relative;padding-top:6px}
+  .day-num{font-family:'Fraunces',serif;font-weight:600;font-size:15px;color:var(--ink-faint)}
+  .day-date{font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-faint);margin-top:2px}
+  .day-line{position:absolute;top:34px;bottom:-40px;left:6px;width:1px;background:var(--line)}
   .day:last-of-type .day-line{display:none}
-
   .day-body{padding-bottom:56px}
-  .day-title{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    font-size:25px;
-    margin-bottom:6px;
-  }
-  .day-narrative{
-    font-size:14.5px;
-    color:var(--ink-soft);
-    margin-bottom:22px;
-    max-width:580px;
-  }
-
-  /* ===== STOP CARD ===== */
-  .stop{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:18px 20px;
-    margin-bottom:12px;
-    position:relative;
-    display:grid;
-    grid-template-columns:64px 1fr;
-    gap:16px;
-  }
-  .stop::before{
-    content:'';
-    position:absolute;
-    left:-26px;
-    top:24px;
-    width:9px;height:9px;
-    border-radius:50%;
-    background:var(--card);
-    border:2px solid var(--bluebird);
-  }
-  .stop.transit::before{ border-color:var(--terracotta); }
-  .stop.food::before{ border-color:var(--moss); }
-  .stop.shop::before{ border-color:#8a5a9e; }
-
-  .stop-time{
-    font-family:'Space Mono',monospace;
-    font-size:12.5px;
-    font-weight:700;
-    color:var(--bluebird-deep);
-    padding-top:1px;
-  }
-  .stop.transit .stop-time{ color:var(--terracotta) }
-  .stop.food .stop-time{ color:var(--moss) }
-  .stop.shop .stop-time{ color:#8a5a9e }
-
-  .stop-name{
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:15.5px;
-    margin-bottom:5px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    flex-wrap:wrap;
-  }
-  .tag{
-    font-family:'Space Mono',monospace;
-    font-size:9.5px;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    padding:2px 7px;
-    border-radius:20px;
-    background:var(--bluebird-tint);
-    color:var(--bluebird-deep);
-    font-weight:700;
-  }
-  .stop.transit .tag{ background:var(--terracotta-tint); color:var(--terracotta) }
-  .stop.food .tag{ background:var(--moss-tint); color:var(--moss) }
-  .stop.shop .tag{ background:#ede2f1; color:#8a5a9e }
-
-  .brand-list{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin-top:9px;
-  }
-  .brand-pill{
-    font-family:'Space Mono',monospace;
-    font-size:10.5px;
-    padding:3px 9px;
-    border-radius:20px;
-    background:#f6f1f8;
-    border:1px solid #ddc9e4;
-    color:#6b4178;
-  }
-
-  .stop-note{
-    font-size:13.5px;
-    color:var(--ink-soft);
-    line-height:1.55;
-  }
-  .stop-note a{
-    color:var(--bluebird-deep);
-    text-decoration:none;
-    border-bottom:1px solid var(--bluebird);
-  }
-
-  /* added-stop meta line */
-  .added-by{
-    font-family:'Space Mono',monospace;
-    font-size:10px;
-    color:var(--ink-faint);
-    margin-top:8px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    flex-wrap:wrap;
-  }
-
-  /* ===== TRANSIT CONNECTOR ===== */
-  .transit-row{
-    display:grid;
-    grid-template-columns:64px 1fr;
-    gap:16px;
-    margin:2px 0 12px;
-    align-items:center;
-  }
-  .transit-row .stop-time{ font-size:11px; color:var(--ink-faint) }
-  .transit-text{
-    font-family:'Space Mono',monospace;
-    font-size:11.5px;
-    color:var(--terracotta);
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .transit-text svg{ width:13px; height:13px; flex-shrink:0 }
-  .transit-dots{
-    flex:1;
-    height:1px;
-    background-image:linear-gradient(to right, var(--line) 50%, transparent 0%);
-    background-size:6px 1px;
-    background-repeat:repeat-x;
-  }
-
-  /* ===== CALLOUT ===== */
-  .callout{
-    margin-top:18px;
-    margin-left:80px;
-    padding:14px 16px;
-    background:var(--terracotta-tint);
-    border-left:2px solid var(--terracotta);
-    border-radius:0 var(--radius) var(--radius) 0;
-    font-size:13px;
-    color:#6b3320;
-    max-width:560px;
-  }
-  .callout b{ display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-family:'Space Mono',monospace; margin-bottom:5px; }
-
-  /* ===== REMARKS (collaborative notes) ===== */
-  .remarks{
-    margin-top:12px;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-  }
-  .note-card{
-    background:var(--paper-deep);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:9px 11px;
-  }
+  .day-title{font-family:'Fraunces',serif;font-weight:600;font-size:25px;margin-bottom:6px}
+  .day-narrative{font-size:14.5px;color:var(--ink-soft);margin-bottom:22px;max-width:580px}
+  .day-list{display:block;min-height:4px}
+  .stop{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:12px;position:relative;display:grid;grid-template-columns:64px 1fr;gap:16px}
+  .stop::before{content:'';position:absolute;left:-26px;top:24px;width:9px;height:9px;border-radius:50%;background:var(--card);border:2px solid var(--bluebird)}
+  .stop.transit::before{border-color:var(--terracotta)}
+  .stop.food::before{border-color:var(--moss)}
+  .stop.shop::before{border-color:#8a5a9e}
+  .stop-time{font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;color:var(--bluebird-deep);padding-top:1px}
+  .stop.transit .stop-time{color:var(--terracotta)}
+  .stop.food .stop-time{color:var(--moss)}
+  .stop.shop .stop-time{color:#8a5a9e}
+  .stop-name{font-family:'Inter',sans-serif;font-weight:600;font-size:15.5px;margin-bottom:5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:20px;background:var(--bluebird-tint);color:var(--bluebird-deep);font-weight:700}
+  .stop.transit .tag{background:var(--terracotta-tint);color:var(--terracotta)}
+  .stop.food .tag{background:var(--moss-tint);color:var(--moss)}
+  .stop.shop .tag{background:#ede2f1;color:#8a5a9e}
+  .brand-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .brand-pill{font-family:'Space Mono',monospace;font-size:10.5px;padding:3px 9px;border-radius:20px;background:#f6f1f8;border:1px solid #ddc9e4;color:#6b4178}
+  .stop-note{font-size:13.5px;color:var(--ink-soft);line-height:1.55;white-space:pre-wrap}
+  .transit-row{display:grid;grid-template-columns:64px 1fr;gap:16px;margin:2px 0 12px;align-items:flex-start}
+  .transit-row .stop-time{font-size:11px;color:var(--ink-faint)}
+  .transit-text{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--terracotta);display:flex;align-items:center;gap:8px}
+  .transit-text svg{width:13px;height:13px;flex-shrink:0}
+  .transit-dots{flex:1;height:1px;background-image:linear-gradient(to right, var(--line) 50%, transparent 0%);background-size:6px 1px;background-repeat:repeat-x}
+  .callout{margin:0 0 12px 80px;padding:14px 16px;background:var(--terracotta-tint);border-left:2px solid var(--terracotta);border-radius:0 var(--radius) var(--radius) 0;font-size:13px;color:#6b3320;max-width:560px;white-space:pre-wrap}
+  .callout b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-family:'Space Mono',monospace;margin-bottom:5px}
+  .item-tools{display:flex;align-items:center;gap:5px;margin-top:11px;flex-wrap:wrap}
+  .drag-handle{cursor:grab;user-select:none;font-size:15px;color:var(--ink-faint);padding:2px 6px;line-height:1;border:1px solid var(--line);border-radius:20px;touch-action:none}
+  .drag-handle:active{cursor:grabbing}
+  .tool{background:none;border:1px solid var(--line);border-radius:20px;padding:3px 9px;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);cursor:pointer;letter-spacing:.03em;line-height:1.4}
+  .tool:hover{border-color:var(--bluebird);color:var(--bluebird-deep)}
+  .tool.danger:hover{border-color:var(--terracotta);color:var(--terracotta)}
+  .sortable-ghost{opacity:.35}
+  .sortable-chosen{box-shadow:0 8px 24px rgba(36,31,26,.14)}
+  .hidden-restore{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--ink-faint);margin:0 0 12px}
+  .hidden-restore button{background:none;border:none;color:var(--bluebird-deep);cursor:pointer;font-family:inherit;font-size:inherit;text-decoration:underline;padding:0}
+  .empty-list{font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-faint);padding:4px 0 10px}
+  .remarks{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+  .note-card{background:var(--paper-deep);border:1px solid var(--line);border-radius:var(--radius);padding:9px 11px}
   .note-head{display:flex;align-items:center;gap:8px;margin-bottom:4px}
-  .note-avatar{
-    width:19px;height:19px;border-radius:50%;
-    background:var(--bluebird);color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;flex-shrink:0;
-  }
+  .note-avatar{width:19px;height:19px;border-radius:50%;background:var(--bluebird);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;flex-shrink:0}
   .note-author{font-weight:600;font-size:12.5px}
   .note-time{font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);margin-left:auto}
   .note-text{font-size:13px;color:var(--ink-soft);white-space:pre-wrap;word-break:break-word}
   .note-actions{display:flex;gap:14px;margin-top:6px}
-  .link-btn{
-    background:none;border:none;cursor:pointer;padding:0;
-    font-family:'Space Mono',monospace;font-size:10.5px;
-    color:var(--ink-faint);letter-spacing:.03em;
-  }
+  .link-btn{background:none;border:none;cursor:pointer;padding:0;font-family:'Space Mono',monospace;font-size:10.5px;color:var(--ink-faint);letter-spacing:.03em}
   .link-btn:hover{color:var(--bluebird-deep)}
   .link-btn.danger:hover{color:var(--terracotta)}
-
-  .add-remark{
-    align-self:flex-start;
-    background:none;border:none;cursor:pointer;
-    font-family:'Space Mono',monospace;font-size:11px;
-    color:var(--bluebird-deep);letter-spacing:.04em;
-    padding:3px 0;display:inline-flex;align-items:center;gap:7px;
-  }
+  .add-remark{align-self:flex-start;background:none;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:11px;color:var(--bluebird-deep);letter-spacing:.04em;padding:3px 0;display:inline-flex;align-items:center;gap:7px}
   .add-remark:hover{text-decoration:underline}
-
-  /* ===== MINI FORMS ===== */
-  .mini-form{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:14px;
-    margin:4px 0 10px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
+  .mini-form{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin:4px 0 10px;display:flex;flex-direction:column;gap:10px}
   .mini-form.tight{padding:11px}
   .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .field{display:flex;flex-direction:column;gap:5px}
-  .field label{
-    font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.07em;
-    text-transform:uppercase;color:var(--ink-faint);
-  }
-  .input{
-    font-family:'Inter',sans-serif;font-size:13.5px;
-    padding:9px 11px;border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--paper);color:var(--ink);width:100%;outline:none;
-    transition:border-color .15s;
-  }
+  .field label{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint)}
+  .input{font-family:'Inter',sans-serif;font-size:13.5px;padding:9px 11px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);width:100%;outline:none;transition:border-color .15s}
   .input:focus{border-color:var(--bluebird)}
   textarea.input{resize:vertical;min-height:60px;line-height:1.5}
   select.input{cursor:pointer}
   .form-actions{display:flex;gap:8px;align-items:center;margin-top:2px}
-  .btn{
-    font-family:'Inter',sans-serif;font-size:13px;font-weight:600;
-    padding:9px 16px;border-radius:var(--radius);border:1px solid transparent;
-    cursor:pointer;transition:opacity .15s,background .15s;
-  }
+  .btn{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:9px 16px;border-radius:var(--radius);border:1px solid transparent;cursor:pointer;transition:background .15s}
   .btn-primary{background:var(--bluebird);color:#fff}
   .btn-primary:hover{background:var(--bluebird-deep)}
   .btn-ghost{background:none;color:var(--ink-soft);border-color:var(--line)}
   .btn-ghost:hover{background:var(--paper-deep)}
   .btn-sm{padding:7px 12px;font-size:12px}
-
-  /* ===== ADD BUTTONS ===== */
-  .add-stop-btn,.add-section-btn{
-    width:100%;
-    background:none;
-    border:1px dashed var(--line);
-    border-radius:var(--radius);
-    color:var(--ink-faint);
-    font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.04em;
-    padding:12px;cursor:pointer;transition:all .15s;
-    display:flex;align-items:center;justify-content:center;gap:8px;
-  }
+  .add-stop-btn,.add-section-btn{width:100%;background:none;border:1px dashed var(--line);border-radius:var(--radius);color:var(--ink-faint);font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.04em;padding:12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
   .add-stop-btn:hover,.add-section-btn:hover{border-color:var(--bluebird);color:var(--bluebird-deep);background:var(--card)}
   .add-section-btn{margin:8px 0 0;padding:18px;font-size:12.5px}
-
-  .added-stops{display:flex;flex-direction:column}
-  .added-flag{
-    display:inline-flex;align-items:center;gap:5px;
-    font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;
-    text-transform:uppercase;color:var(--moss);
-    background:var(--moss-tint);border-radius:20px;padding:2px 8px;
-  }
-
-  /* ===== NEW SECTION DIVIDER ===== */
-  .section-divider{
-    grid-column:1 / -1;
-    margin:8px 0 28px;
-    display:flex;align-items:center;gap:14px;
-  }
-  .section-divider span{
-    font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--ink-faint);
-  }
-  .section-divider::after{content:'';flex:1;height:1px;background:var(--line)}
-
-  /* ===== FOOTER NOTE ===== */
-  .footnote{
-    margin-top:24px;
-    padding:24px;
-    background:var(--moss-tint);
-    border-radius:var(--radius);
-    border:1px solid #c5cfb9;
-  }
-  .footnote b{
-    font-family:'Space Mono',monospace;
-    font-size:11px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--moss);
-    display:block;
-    margin-bottom:8px;
-  }
-  .footnote p{
-    font-size:13.5px;
-    color:#3f4a37;
-    max-width:600px;
-  }
-
-  /* ===== MODAL ===== */
-  .modal-overlay{
-    position:fixed;inset:0;background:rgba(36,31,26,.45);
-    display:none;align-items:center;justify-content:center;z-index:200;
-    padding:20px;backdrop-filter:blur(2px);
-  }
+  .added-flag{display:inline-flex;align-items:center;gap:5px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--moss);background:var(--moss-tint);border-radius:20px;padding:2px 8px}
+  .added-by{font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .footnote{margin-top:24px;padding:24px;background:var(--moss-tint);border-radius:var(--radius);border:1px solid #c5cfb9}
+  .footnote b{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--moss);display:block;margin-bottom:8px}
+  .footnote p{font-size:13.5px;color:#3f4a37;max-width:600px}
+  .modal-overlay{position:fixed;inset:0;background:rgba(36,31,26,.45);display:none;align-items:center;justify-content:center;z-index:200;padding:20px;backdrop-filter:blur(2px)}
   .modal-overlay.show{display:flex}
-  .modal{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    width:100%;max-width:380px;padding:26px;
-  }
+  .modal{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);width:100%;max-width:380px;padding:26px}
   .modal h3{font-family:'Fraunces',serif;font-weight:600;font-size:21px;margin-bottom:6px}
   .modal p{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px}
-
-  /* ===== TOAST ===== */
-  .toast{
-    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);
-    background:var(--ink);color:var(--paper);
-    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.03em;
-    padding:11px 18px;border-radius:30px;z-index:300;
-    opacity:0;transition:all .25s;pointer-events:none;max-width:90vw;text-align:center;
-  }
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:var(--paper);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.03em;padding:11px 18px;border-radius:30px;z-index:300;opacity:0;transition:all .25s;pointer-events:none;max-width:90vw;text-align:center}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-  /* ===== RESPONSIVE ===== */
+  .head-edit{background:none;border:none;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--ink-faint);cursor:pointer;text-decoration:underline;padding:0;margin:-8px 0 20px;display:block}
+  .head-edit:hover{color:var(--bluebird-deep)}
   @media (max-width:680px){
     .day{grid-template-columns:1fr}
     .day-rail{display:flex;align-items:baseline;gap:10px;padding-bottom:14px}
     .day-line{display:none}
-    .stop{grid-template-columns:54px 1fr; padding:16px}
+    .stop{grid-template-columns:54px 1fr;padding:16px}
     .stop::before{left:-16px}
     .transit-row{grid-template-columns:54px 1fr}
     .callout{margin-left:0}
     .field-row{grid-template-columns:1fr}
     header{padding:44px 0 32px}
   }
-
-  @media (prefers-reduced-motion: no-preference){
-    .stop{ transition: transform .15s ease, box-shadow .15s ease; }
-    .stop:hover{ transform: translateY(-1px); box-shadow: 0 4px 14px rgba(36,31,26,0.08); }
-  }
 </style>
 </head>
 <body>
-
 <div class="wrap">
-
   <header>
     <div class="eyebrow">June Trip · Jakarta</div>
-    <h1>Jakarta Trip,<br><em>Not a farewell trip~</em></h1>
+    <h1>Girls Trip,<br><em>Not a farewell trip~</em></h1>
     <p class="sub">A little bit of everything and anything.</p>
     <div class="header-meta">
       <div class="meta-chip">Dates<b>Jun 24 – 28, 2026</b></div>
@@ -559,315 +167,69 @@
 
   <div class="intro">
     <b>How this board works</b>
-    Add a remark to any stop, drop in a new stop, or add a whole new section at the bottom. You can Edit / Delete your remark too. Set your name first so everyone knows who left what.
+    Drag the <span style="font-family:'Space Mono',monospace">&#10303;</span> handle (or tap the up and down arrows) to reorder anything. Tap Edit to change a time or detail, Delete to remove it. Use the button under each day to add a stop, a travel hop, or a note. Add remarks to any stop, and a whole new section at the very bottom. Set your name first so everyone knows who changed what.
   </div>
 
-  <!-- DAY 1 -->
   <div class="day">
-    <div class="day-rail">
-      <div class="day-num">Day 01</div>
-      <div class="day-date">Wed, Jun 24</div>
-      <div class="day-line"></div>
-    </div>
+    <div class="day-rail"><div class="day-num">Day 01</div><div class="day-date">Wed, Jun 24</div><div class="day-line"></div></div>
     <div class="day-body">
       <div class="day-title">Land, Mall Run & Lunch -> Check-in</div>
       <p class="day-narrative">Touch down at 10:00, clear immigration and bags, then Bluebird straight into a Pondok Indah Mall then to Senayan City before check-in. We can have lunch then check out Saff &amp; Co and HMNS in one stop and Alchemist is a short hop away if there's still energy.</p>
-
-      <div class="stop transit" data-stop-id="d1s1">
-        <div class="stop-time">11:00</div>
-        <div>
-          <div class="stop-name">Soekarno&#8211;Hatta Airport T3 <span class="tag">Arrival</span></div>
-          <div class="stop-note">Flight 8B676 lands 10:00. Order Bluebird via the MyBluebird app right after customs. Budget 45&#8211;60 min into South Jakarta depending on traffic.</div>
-          <div class="remarks" data-remarks-for="d1s1"></div>
-        </div>
-      </div>
-
-      <div class="transit-row">
-        <div class="stop-time">~50min</div>
-        <div class="transit-text">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M14 5l7 7-7 7"/></svg>
-          <span class="transit-dots"></span>
-          Bluebird, CGK → Pondok Indah
-        </div>
-      </div>
-
-      <div class="stop shop" data-stop-id="d1s2">
-        <div class="stop-time">12:00</div>
-        <div>
-          <div class="stop-name">Pondok Indah Mall (PIM 1/3) <span class="tag">Perfume run</span></div>
-          <div class="stop-note">Saff & Co and HMNS is here in one mall - easiest stop on the list.</div>
-          <div class="brand-list">
-            <span class="brand-pill">Saff &amp; Co — PIM 3</span>
-            <span class="brand-pill">HMNS — PIM</span>
-          </div>
-          <div class="remarks" data-remarks-for="d1s2"></div>
-        </div>
-      </div>
-
-      <div class="transit-row">
-        <div class="stop-time">~15min</div>
-        <div class="transit-text">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M14 5l7 7-7 7"/></svg>
-          <span class="transit-dots"></span>
-          Optional: Bluebird to Pacific Place / Senayan City
-        </div>
-      </div>
-
-      <div class="stop shop" data-stop-id="d1s3">
-        <div class="stop-time">2:15</div>
-        <div>
-          <div class="stop-name">Senayan City <span class="tag">If ENERGY permits</span></div>
-          <div class="stop-note">Alchemist Fragrance is here or we can go to Pacific Place instead as both close to Kebayoran Baru. We can also shop for some groceries for the staycation here.</div>
-          <div class="remarks" data-remarks-for="d1s3"></div>
-        </div>
-      </div>
-
-      <div class="transit-row">
-        <div class="stop-time">~10min</div>
-        <div class="transit-text">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M14 5l7 7-7 7"/></svg>
-          <span class="transit-dots"></span>
-          Short Bluebird hop
-        </div>
-      </div>
-
-      <div class="stop" data-stop-id="d1s4">
-        <div class="stop-time">16:00</div>
-        <div>
-          <div class="stop-name">KAMAR Rooftop, Kecamatan Kebayoran Baru <span class="tag">Check-in</span></div>
-          <div class="stop-note">Check-in after 1:00 PM, June 24&#8211;26.</div>
-          <div class="stop-note">The Qalby girls are expected to arrived after they finished their office work hours. We can have our BBQ tonight or we can go out for night kulineran nearby.</div>
-          <div class="remarks" data-remarks-for="d1s4"></div>
-        </div>
-      </div>
-
-      <div class="added-stops" data-added-for="day-1"></div>
+      <div class="day-list" id="list-day-1"></div>
+      <div class="hidden-restore" id="restore-day-1"></div>
       <div class="form-slot" id="form-day-1"></div>
-      <button class="add-stop-btn" onclick="toggleAddStop('day-1')">+ Add a stop to this day</button>
+      <button class="add-stop-btn" onclick="toggleAdd('day-1')">+ Add to this day</button>
     </div>
   </div>
 
-  <!-- DAY 2 -->
   <div class="day">
-    <div class="day-rail">
-      <div class="day-num">Day 02</div>
-      <div class="day-date">Thu, Jun 25</div>
-      <div class="day-line"></div>
-    </div>
+    <div class="day-rail"><div class="day-num">Day 02</div><div class="day-date">Thu, Jun 25</div><div class="day-line"></div></div>
     <div class="day-body">
       <div class="day-title">The Qalby Girls' Day</div>
-      <p class="day-narrative">Full day at KAMAR rooftop with the Qalby girls. More kulineran after office hour within the area.</p>
-      <div class="stop" data-stop-id="d2s1">
-        <div class="stop-time">All day</div>
-        <div>
-          <div class="stop-name">KAMAR Rooftop, Kecamatan Kebayoran Baru</div>
-          <div class="stop-note">No specific planned activities - a deliberate day with the Qalby girls and BBQ at night (or go out for night kulineran nearby).</div>
-          <div class="remarks" data-remarks-for="d2s1"></div>
-        </div>
-      </div>
-
-      <div class="added-stops" data-added-for="day-2"></div>
+      <p class="day-narrative">Full day at KAMAR rooftop with the Qalby girls. After office hour, will probably go out to places within the area with them.</p>
+      <div class="day-list" id="list-day-2"></div>
+      <div class="hidden-restore" id="restore-day-2"></div>
       <div class="form-slot" id="form-day-2"></div>
-      <button class="add-stop-btn" onclick="toggleAddStop('day-2')">+ Add a stop to this day</button>
+      <button class="add-stop-btn" onclick="toggleAdd('day-2')">+ Add to this day</button>
     </div>
   </div>
 
-  <!-- DAY 3 -->
   <div class="day">
-    <div class="day-rail">
-      <div class="day-num">Day 03</div>
-      <div class="day-date">Fri, Jun 26</div>
-      <div class="day-line"></div>
-    </div>
+    <div class="day-rail"><div class="day-num">Day 03</div><div class="day-date">Fri, Jun 26</div><div class="day-line"></div></div>
     <div class="day-body">
       <div class="day-title">Possible WFC & Check-out -> Check-in to Miers</div>
-      <p class="day-narrative">Possible morning WFC with the Siiru team, checkout by 11AM, then Bluebird across to Kuningan for the 2PM check-in.</p>
-
-      <div class="stop food" data-stop-id="d3s1">
-        <div class="stop-time">08:30</div>
-        <div>
-          <div class="stop-name">Cafe TBC <span class="tag">WFC option</span></div>
-          <div class="stop-note">Check-out now and come back at 11 to collect bags? Hurmm..</div>
-          <div class="remarks" data-remarks-for="d3s1"></div>
-        </div>
-      </div>
-
-      <div class="stop" data-stop-id="d3s2">
-        <div class="stop-time">10:30</div>
-        <div>
-          <div class="stop-name">Checkout later & Brunch Somewhere?<span class="tag">Before 11AM</span></div>
-          <div class="stop-note">Swing back to collect bags before heading to Miers.</div>
-          <div class="remarks" data-remarks-for="d3s2"></div>
-        </div>
-      </div>
-
-      <div class="transit-row">
-        <div class="stop-time">~30min</div>
-        <div class="transit-text">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M14 5l7 7-7 7"/></svg>
-          <span class="transit-dots"></span>
-          Bluebird, Kebayoran Baru → Kuningan
-        </div>
-      </div>
-
-      <div class="stop" data-stop-id="d3s3">
-        <div class="stop-time">14:00</div>
-        <div>
-          <div class="stop-name">Miers Kuningan, ARTOTEL Curated <span class="tag">Check-in</span></div>
-          <div class="stop-note">Check-in after 14:00 for Studio 23, breakfast for 2 included, Jun 26&#8211;28.</div>
-          <div class="remarks" data-remarks-for="d3s3"></div>
-        </div>
-      </div>
-
-      <div class="stop" data-stop-id="d3s4">
-        <div class="stop-time">15:00</div>
-        <div>
-          <div class="stop-name">Free & Easy <span class="tag">Rest / SHOP</span></div>
-          <div class="stop-note">No plan yet. Possible dinner outing somewhere? or just Grab something in? Maybe call a massage in?</div>
-          <div class="remarks" data-remarks-for="d3s4"></div>
-        </div>
-      </div>
-
-      <div class="added-stops" data-added-for="day-3"></div>
+      <p class="day-narrative">Possible morning work-from-cafe with the team, checkout by 11AM, then Bluebird across to Kuningan for the 2PM check-in.</p>
+      <div class="day-list" id="list-day-3"></div>
+      <div class="hidden-restore" id="restore-day-3"></div>
       <div class="form-slot" id="form-day-3"></div>
-      <button class="add-stop-btn" onclick="toggleAddStop('day-3')">+ Add a stop to this day</button>
+      <button class="add-stop-btn" onclick="toggleAdd('day-3')">+ Add to this day</button>
     </div>
   </div>
 
-  <!-- DAY 4 -->
   <div class="day">
-    <div class="day-rail">
-      <div class="day-num">Day 04</div>
-      <div class="day-date">Sat, Jun 27</div>
-      <div class="day-line"></div>
-    </div>
+    <div class="day-rail"><div class="day-num">Day 04</div><div class="day-date">Sat, Jun 27</div><div class="day-line"></div></div>
     <div class="day-body">
       <div class="day-title">Bogor Day Trip</div>
-      <p class="day-narrative">Grace is driving for this trip, working through the checklist, there's no fixed checklist yet, but would love to have: a walk along the Surya Kencana (Surken), Kampung Kecil (dinner maybe), lunch at Bebek Dharmawangsa, coffee before heading back or in between stops. Open for suggestions!</p>
-
-      <div class="stop transit" data-stop-id="d4s1">
-        <div class="stop-time">08:00</div>
-        <div>
-          <div class="stop-name">Depart Miers Kuningan <span class="tag">To Bogor, by car</span></div>
-          <div class="stop-note">Driven by Grace via Jagorawi toll  ~ 60 to 90 mins depending on traffic.</div>
-          <div class="remarks" data-remarks-for="d4s1"></div>
-        </div>
-      </div>
-
-      <div class="stop food" data-stop-id="d4s2">
-        <div class="stop-time">10:00</div>
-        <div>
-          <div class="stop-name">SURKEN  -> Bebek Dharmawangsa Bogor <span class="tag">Brunch</span></div>
-          <div class="stop-note">From the checklist.</div>
-          <div class="remarks" data-remarks-for="d4s2"></div>
-        </div>
-      </div>
-
-      <div class="stop food" data-stop-id="d4s3">
-        <div class="stop-time">15:30</div>
-        <div>
-          <div class="stop-name">Coffee at Bogor <span class="tag">Afternoon</span></div>
-          <div class="stop-note">From the checklist - in between stops or to wind down before the drive back.</div>
-          <div class="remarks" data-remarks-for="d4s3"></div>
-        </div>
-      </div>
-
-      <div class="transit-row">
-        <div class="stop-time">~90min</div>
-        <div class="transit-text">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M14 5l7 7-7 7"/></svg>
-          <span class="transit-dots"></span>
-          Drive back, Bogor → Kuningan
-        </div>
-      </div>
-
-      <div class="stop" data-stop-id="d4s4">
-        <div class="stop-time">18:00</div>
-        <div>
-          <div class="stop-name">Return to Miers Kuningan <span class="tag">Dinner</span></div>
-          <div class="stop-note">Evening back, Dinner at Kampung Kecil (Jl. Tentara Pelajar, Kebayoran Lama) if energy allows.</div>
-          <div class="remarks" data-remarks-for="d4s4"></div>
-        </div>
-      </div>
-
-      <div class="callout">
-        <b>Toll &amp; fuel estimate — round trip</b>
-        Jagorawi toll (Class I): ~Rp 36,000&#8211;50,000 round trip. Fuel (Pertamax, ~120&#8211;150km mixed driving): ~Rp 195,000&#8211;245,000. Total: roughly <strong>Rp 230,000&#8211;295,000 (~RM 65&#8211;85)</strong>, before parking at Bogor stops.
-      </div>
-
-      <div class="added-stops" data-added-for="day-4"></div>
+      <p class="day-narrative">Grace is driving for this trip, working through the checklist, while no fixed checklist yet, but would love to have: Surya Kencana (Surken), Kampung Kecil (dinner maybe), lunch at Bebek Dharmawangsa, coffee before heading back or in between stops. Open for suggestions!</p>
+      <div class="day-list" id="list-day-4"></div>
+      <div class="hidden-restore" id="restore-day-4"></div>
       <div class="form-slot" id="form-day-4"></div>
-      <button class="add-stop-btn" onclick="toggleAddStop('day-4')">+ Add a stop to this day</button>
+      <button class="add-stop-btn" onclick="toggleAdd('day-4')">+ Add to this day</button>
     </div>
   </div>
 
-  <!-- DAY 5 -->
   <div class="day">
-    <div class="day-rail">
-      <div class="day-num">Day 05</div>
-      <div class="day-date">Sun, Jun 28</div>
-    </div>
+    <div class="day-rail"><div class="day-num">Day 05</div><div class="day-date">Sun, Jun 28</div></div>
     <div class="day-body">
       <div class="day-title">Check-out, Last Shop & Fly Home</div>
-      <p class="day-narrative">Last brunch & shopping stop on the way to the airport for MAGA (and Alchemist or Saff &amp; Co if anything's still on the list), then take Bluebird to CGK.</p>
-
-      <div class="stop" data-stop-id="d5s1">
-        <div class="stop-time">09:00</div>
-        <div>
-          <div class="stop-name">Miers Kuningan Checkout</div>
-          <div class="stop-note">Check-out.</div>
-          <div class="remarks" data-remarks-for="d5s1"></div>
-        </div>
-      </div>
-
-      <div class="transit-row">
-        <div class="stop-time">~40min</div>
-        <div class="transit-text">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M14 5l7 7-7 7"/></svg>
-          <span class="transit-dots"></span>
-          Bluebird, Kuningan → PIK
-        </div>
-      </div>
-
-      <div class="stop shop" data-stop-id="d5s2">
-        <div class="stop-time">10:00</div>
-        <div>
-          <div class="stop-name">PIK Avenue / By The Sea <span class="tag">Brunch / SHOP</span></div>
-          <div class="stop-note">Brunch at Tuan Mudo & last shopping at PIK (This place is 15&#8211;20 min from the airport and some reviewers note we can even store luggage here while we shop.) Leave PIK by ~2.00 PM to clear traffic and check-in with buffer.</div>
-          <div class="brand-list">
-            <span class="brand-pill">MAGA</span>
-            <span class="brand-pill">Alchemist</span>
-            <span class="brand-pill">Saff &amp; Co</span>
-          </div>
-          <div class="remarks" data-remarks-for="d5s2"></div>
-        </div>
-      </div>
-
-      <div class="transit-row">
-        <div class="stop-time">~20min</div>
-        <div class="transit-text">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M14 5l7 7-7 7"/></svg>
-          <span class="transit-dots"></span>
-          Bluebird, PIK → CGK
-        </div>
-      </div>
-
-      <div class="stop transit" data-stop-id="d5s3">
-        <div class="stop-time">15:00</div>
-        <div>
-          <div class="stop-name">Soekarno&#8211;Hatta Airport T3 <span class="tag">Departure</span></div>
-          <div class="stop-note">Flight 8B679 departs 17:00.</div>
-          <div class="remarks" data-remarks-for="d5s3"></div>
-        </div>
-      </div>
-
-      <div class="added-stops" data-added-for="day-5"></div>
+      <p class="day-narrative">Last brunch & shopping stop on the way to the airport for MAGA (and Alchemist or Saff &amp; Co if anything's still on the list), then Bluebird to CGK.</p>
+      <div class="day-list" id="list-day-5"></div>
+      <div class="hidden-restore" id="restore-day-5"></div>
       <div class="form-slot" id="form-day-5"></div>
-      <button class="add-stop-btn" onclick="toggleAddStop('day-5')">+ Add a stop to this day</button>
+      <button class="add-stop-btn" onclick="toggleAdd('day-5')">+ Add to this day</button>
     </div>
   </div>
 
-  <!-- ADDED SECTIONS -->
   <div id="addedSections"></div>
   <div class="form-slot" id="form-new-section"></div>
   <button class="add-section-btn" onclick="toggleAddSection()">+ Add a new section</button>
@@ -876,50 +238,80 @@
     <b>Before you fly</b>
     <p>Sunday's PIK stop is tighter than the others with only few hours of buffer before you need to leave for CGK, so keep that shopping and brunch run efficient. If you want to shop at Alchemist or Saff &amp; Co, check their opening hours and plan accordingly. If you want to have brunch at Tuan Mudo, check their opening hours too.</p>
   </div>
-
 </div>
 
-<!-- NAME MODAL -->
 <div class="modal-overlay" id="nameModal">
   <div class="modal">
     <h3>Who's planning?</h3>
-    <p>Add your name so the rest of the group knows who left each remark and stop.</p>
-    <div class="field">
-      <label>Your name</label>
-      <input class="input" id="nameInput" placeholder="e.g. Sofya, Grace, Hajar" maxlength="40" onkeydown="if(event.key==='Enter')saveName()">
-    </div>
+    <p>Add your name so the rest of the group knows who left each remark and change.</p>
+    <div class="field"><label>Your name</label>
+      <input class="input" id="nameInput" placeholder="e.g. Sofya, Grace, Hajar" maxlength="40" onkeydown="if(event.key==='Enter')saveName()"></div>
     <div class="form-actions" style="margin-top:16px">
       <button class="btn btn-primary" onclick="saveName()">Save name</button>
       <button class="btn btn-ghost" onclick="closeNameModal()">Later</button>
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
-
 <script>
-/* ═══════════════════════════════════════════════════════════════
-   CONFIG  — leave blank for local-only mode (notes saved on this
-   device only). Fill both values to switch on real shared sync
-   so everyone with the link sees the same notes live.
-   Setup steps are in the message that came with this file.
-   ═══════════════════════════════════════════════════════════════ */
-const SUPABASE_URL      = "https://rzzrrckxpcggytjbeppm.supabase.co";   // e.g. https://abcd1234.supabase.co
-const SUPABASE_ANON_KEY = "sb_publishable_2oh6WJ0I26lTY5Ju7BwcXQ_pgSRTwjw";   // the public anon key
-const BOARD_ID          = "jakarta-jun2026";  // shared key for this trip
+const SUPABASE_URL      = "https://rzzrrckxpcggytjbeppm.supabase.co";   // paste your Supabase project URL (same as before)
+const SUPABASE_ANON_KEY = "sb_publishable_2oh6WJ0I26lTY5Ju7BwcXQ_pgSRTwjw";   // paste your publishable (anon) key (same as before)
+const BOARD_ID          = "jakarta-jun2026";
 const TABLE             = "itinerary_items";
 
-/* ─── state ─── */
+const SEED = {
+  "day-1": [
+    {id:"d1s1", type:"stop", klass:"transit", time:"11:00", name:"Soekarno–Hatta Airport T3", tag:"Arrival", note:"Flight 8B676 lands 10:00. Order Bluebird via the MyBluebird app right after customs, or use the counter on the arrivals level. Budget 45–60 min into South Jakarta depending on traffic.", brands:[]},
+    {id:"d1t1", type:"transit", time:"~50min", text:"Bluebird, CGK → Pondok Indah"},
+    {id:"d1s2", type:"stop", klass:"shop", time:"12:00", name:"Pondok Indah Mall (PIM 1/3)", tag:"Perfume run", note:"Saff & Co and HMNS is here in one mall - easiest stop on the list.", brands:["Saff & Co — PIM 3","HMNS — PIM"]},
+    {id:"d1t2", type:"transit", time:"~15min", text:"Optional: Bluebird to Pacific Place / Senayan City"},
+    {id:"d1s3", type:"stop", klass:"shop", time:"2:15", name:"Senayan City", tag:"If ENERGY permits", note:"Alchemist Fragrance is here or we can go to Pacific Place instead as both close to Kebayoran Baru. We can also shop for some groceries for the staycation.", brands:[]},
+    {id:"d1t3", type:"transit", time:"~10min", text:"Short Bluebird hop"},
+    {id:"d1s4", type:"stop", klass:"", time:"16:00", name:"KAMAR Rooftop, Kecamatan Kebayoran Baru", tag:"Check-in", note:"Check-in after 1:00 PM, June 24–26. The Qalby girls arrived after they finished their office work hours. We can have our BBQ tonight or go out for night kulineran nearby.", brands:[]}
+  ],
+  "day-2": [
+    {id:"d2s1", type:"stop", klass:"", time:"All day", name:"KAMAR Rooftop, Kecamatan Kebayoran Baru", tag:"", note:"No specific planned activities - a deliberate day with the Qalby girls and BBQ at night (or go out for night kulineran nearby).", brands:[]}
+  ],
+  "day-3": [
+    {id:"d3s1", type:"stop", klass:"food", time:"08:30", name:"Cafe TBC", tag:"WFC option", note:"Check-out now and come back at 11 to collect bags? Hurmm..", brands:[]},
+    {id:"d3s2", type:"stop", klass:"", time:"10:30", name:"Checkout & Brunch Somewhere?", tag:"Before 11AM", note:"Swing back to collect bags before heading to Miers.", brands:[]},
+    {id:"d3t1", type:"transit", time:"~30min", text:"Bluebird, Kebayoran Baru → Kuningan"},
+    {id:"d3s3", type:"stop", klass:"", time:"14:00", name:"Miers Kuningan, ARTOTEL Curated", tag:"Check-in", note:"Check-in after 14:00 for Studio 23, breakfast for 2 included, Jun 26–28.", brands:[]},
+    {id:"d3s4", type:"stop", klass:"", time:"15:00", name:"Free & Easy", tag:"Rest / SHOP", note:"No plan yet. Possible dinner out somewhere? or just Grab something in? Maybe call a massage in?", brands:[]},
+    {id:"d3c1", type:"callout", title:"options", body:"Hajar can stay in until 11 AM then rejoin for brunch before moving to Miers."}
+  ],
+  "day-4": [
+    {id:"d4s1", type:"stop", klass:"transit", time:"08:00", name:"Depart Miers Kuningan", tag:"To Bogor, by car", note:"Driven by Grace via Jagorawi toll ~ 60 to 90 mins depending on traffic.", brands:[]},
+    {id:"d4s2", type:"stop", klass:"food", time:"10:00", name:"SURKEN -> Bebek Dharmawangsa Bogor", tag:"Brunch", note:"From the checklist.", brands:[]},
+    {id:"d4s3", type:"stop", klass:"food", time:"15:30", name:"Coffee at Bogor", tag:"Afternoon", note:"From the checklist - in between stops or to wind down before the drive back.", brands:[]},
+    {id:"d4t1", type:"transit", time:"~90min", text:"Drive back, Bogor → Kuningan"},
+    {id:"d4s4", type:"stop", klass:"", time:"18:00", name:"Return to Miers Kuningan", tag:"Dinner", note:"Evening back, Dinner at Kampung Kecil (Jl. Tentara Pelajar, Kebayoran Lama) if energy allows.", brands:[]},
+    {id:"d4c1", type:"callout", title:"Toll & fuel estimate, round trip", body:"Jagorawi toll (Class I): ~Rp 36,000–50,000 round trip. Fuel (Pertamax, ~120–150km mixed driving): ~Rp 195,000–245,000. Total: roughly Rp 230,000–295,000 (~RM 65–85), before parking at Bogor stops."}
+  ],
+  "day-5": [
+    {id:"d5s1", type:"stop", klass:"", time:"09:00", name:"Miers Kuningan Checkout", tag:"", note:"Check-out.", brands:[]},
+    {id:"d5t1", type:"transit", time:"~40min", text:"Bluebird, Kuningan → PIK"},
+    {id:"d5s2", type:"stop", klass:"shop", time:"10:00", name:"PIK Avenue / By The Sea", tag:"Brunch / SHOP", note:"Brunch at Tuan Mudo & last shopping at PIK (This place is 15–20 min from the airport and some reviewers note we can even store luggage here while we shop.) Leave PIK by ~2.00 PM to clear traffic and check-in with buffer.", brands:["MAGA","Alchemist","Saff & Co"]},
+    {id:"d5t2", type:"transit", time:"~20min", text:"Bluebird, PIK → CGK"},
+    {id:"d5s3", type:"stop", klass:"transit", time:"15:00", name:"Soekarno–Hatta Airport T3", tag:"Departure", note:"Flight 8B679 departs 17:00.", brands:[]}
+  ]
+};
+const DAY_CONTAINERS = ["day-1","day-2","day-3","day-4","day-5"];
+
 const LS_ITEMS = "jkt_items_" + BOARD_ID;
 const LS_NAME  = "jkt_me";
 let ITEMS = [];
 let ME = localStorage.getItem(LS_NAME) || "";
 let sb = null;
 let shared = false;
+const sortables = {};
+const HEAD_DEFAULTS = {};
+let FOOT_DEFAULT = null;
 
-/* ─── helpers ─── */
-const $ = (s, r=document) => r.querySelector(s);
-const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+const SEED_INDEX = {};
+Object.entries(SEED).forEach(([cont, arr]) => arr.forEach(o => { SEED_INDEX[o.id] = {cont, obj:o}; }));
+function isSeed(id){ return !!SEED_INDEX[id]; }
+
 function uid(){ return 'x' + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
 function esc(s){ return (s==null?'':String(s)).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function initials(n){ if(!n) return '?'; return n.trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase(); }
@@ -935,13 +327,9 @@ function timeAgo(v){
   return new Date(t).toLocaleDateString('en-GB',{day:'numeric',month:'short'});
 }
 let toastT;
-function toast(msg){
-  const el=$('#toast'); el.textContent=msg; el.classList.add('show');
-  clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove('show'),2600);
-}
+function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove('show'),2600); }
 
-/* ─── persistence (local OR shared) ─── */
-function loadLocal(){ try{ ITEMS = JSON.parse(localStorage.getItem(LS_ITEMS)||'[]'); }catch{ ITEMS=[]; } }
+function loadLocal(){ try{ ITEMS = JSON.parse(localStorage.getItem(LS_ITEMS)||'[]'); }catch(e){ ITEMS=[]; } }
 function saveLocal(){ localStorage.setItem(LS_ITEMS, JSON.stringify(ITEMS)); }
 
 async function refresh(){
@@ -949,25 +337,20 @@ async function refresh(){
     const { data, error } = await sb.from(TABLE).select('*').eq('board_id',BOARD_ID).order('created_at',{ascending:true});
     if(error){ console.error(error); toast('Sync issue, showing what loaded'); return; }
     ITEMS = (data||[]).map(r => ({ id:r.id, kind:r.kind, parent:r.parent, author:r.author, payload:r.payload||{}, created_at:r.created_at, updated_at:r.updated_at }));
-  } else {
-    loadLocal();
-  }
+  } else { loadLocal(); }
   renderAll();
 }
-
-async function addItem(kind, parent, payload){
-  if(!ensureName()) return;
+async function addRaw(kind, parent, payload){
   if(shared){
     const { error } = await sb.from(TABLE).insert({ board_id:BOARD_ID, kind, parent, author:ME, payload });
-    if(error){ console.error(error); toast('Could not save, check your connection'); return; }
+    if(error){ console.error(error); toast('Could not save'); return; }
     await refresh();
   } else {
     ITEMS.push({ id:uid(), kind, parent, author:ME, payload, created_at:Date.now(), updated_at:Date.now() });
     saveLocal(); renderAll();
   }
-  toast('Saved');
 }
-
+async function addItem(kind, parent, payload){ if(!ensureName()) return; await addRaw(kind, parent, payload); toast('Saved'); }
 async function patchItem(id, payload){
   if(shared){
     const { error } = await sb.from(TABLE).update({ payload, updated_at:new Date().toISOString() }).eq('id',id);
@@ -977,9 +360,7 @@ async function patchItem(id, payload){
     const it=ITEMS.find(x=>x.id===id); if(it){ it.payload=payload; it.updated_at=Date.now(); }
     saveLocal(); renderAll();
   }
-  toast('Updated');
 }
-
 async function removeItem(id){
   if(shared){
     const { error } = await sb.from(TABLE).delete().eq('id',id);
@@ -989,298 +370,321 @@ async function removeItem(id){
     ITEMS = ITEMS.filter(x=>x.id!==id);
     saveLocal(); renderAll();
   }
-  toast('Deleted');
 }
 
-/* ─── identity ─── */
-function updateMeUI(){
-  $('#meName').textContent = ME || 'Add your name';
-  $('#meAvatar').textContent = initials(ME);
+function getLayout(){
+  const item = ITEMS.find(i=>i.kind==='layout');
+  const data = (item && item.payload) ? item.payload : {};
+  return { item, order: data.order||{}, edits: data.edits||{}, hidden: data.hidden||{}, meta: data.meta||{} };
 }
-function openNameModal(){ $('#nameInput').value = ME; $('#nameModal').classList.add('show'); setTimeout(()=>$('#nameInput').focus(),50); }
-function closeNameModal(){ $('#nameModal').classList.remove('show'); }
-function saveName(){
-  const v = $('#nameInput').value.trim();
-  if(!v){ toast('Type a name first'); return; }
-  ME = v; localStorage.setItem(LS_NAME, ME);
-  updateMeUI(); renderAll(); closeNameModal(); toast('Hi '+ME.split(' ')[0]+'!');
+async function saveLayout(next){
+  const { item } = getLayout();
+  if(item) await patchItem(item.id, next);
+  else await addRaw('layout', null, next);
 }
-function ensureName(){
-  if(ME) return true;
-  openNameModal(); toast('Add your name to continue');
-  return false;
+function persistOrder(cid, ids){ const L=getLayout(); saveLayout({ order:{...L.order,[cid]:ids}, edits:L.edits, hidden:L.hidden, meta:L.meta }); }
+function hideOriginal(id){ const L=getLayout(); saveLayout({ order:L.order, edits:L.edits, hidden:{...L.hidden,[id]:true}, meta:L.meta }); }
+function restoreOriginal(id){ const L=getLayout(); const h={...L.hidden}; delete h[id]; saveLayout({ order:L.order, edits:L.edits, hidden:h, meta:L.meta }); }
+function editOriginal(id, fields){ const L=getLayout(); saveLayout({ order:L.order, edits:{...L.edits,[id]:fields}, hidden:L.hidden, meta:L.meta }); }
+function setMeta(key, obj){ const L=getLayout(); saveLayout({ order:L.order, edits:L.edits, hidden:L.hidden, meta:{...L.meta,[key]:obj} }); }
+function clearMeta(key){ const L=getLayout(); const m={...L.meta}; delete m[key]; saveLayout({ order:L.order, edits:L.edits, hidden:L.hidden, meta:m }); }
+
+function updateMeUI(){ document.getElementById('meName').textContent = ME || 'Add your name'; document.getElementById('meAvatar').textContent = initials(ME); }
+function openNameModal(){ document.getElementById('nameInput').value = ME; document.getElementById('nameModal').classList.add('show'); setTimeout(()=>document.getElementById('nameInput').focus(),50); }
+function closeNameModal(){ document.getElementById('nameModal').classList.remove('show'); }
+function saveName(){ const v=document.getElementById('nameInput').value.trim(); if(!v){ toast('Type a name first'); return; } ME=v; localStorage.setItem(LS_NAME,ME); updateMeUI(); renderAll(); closeNameModal(); toast('Hi '+ME.split(' ')[0]+'!'); }
+function ensureName(){ if(ME) return true; openNameModal(); toast('Add your name to continue'); return false; }
+
+function viewFromAdded(i){
+  const p=i.payload||{};
+  return { id:i.id, seed:false, type:p.itemType||'stop', klass:p.klass||'', time:p.time||'', name:p.name||'', tag:p.tag||'', note:p.note||'', brands:p.brands||[], text:p.text||'', title:p.title||'', body:p.body||'', created_at:i.created_at };
+}
+function getView(id){
+  if(isSeed(id)){ const {obj}=SEED_INDEX[id]; const L=getLayout(); return { ...obj, ...(L.edits[id]||{}), seed:true }; }
+  const it=ITEMS.find(i=>i.kind==='stop'&&i.id===id); return it?viewFromAdded(it):null;
+}
+function orderedViews(cid){
+  const L=getLayout();
+  const seedViews=(SEED[cid]||[]).filter(o=>!L.hidden[o.id]).map(o=>({ ...o, ...(L.edits[o.id]||{}), seed:true }));
+  const addedViews=ITEMS.filter(i=>i.kind==='stop'&&i.parent===cid&&!L.hidden[i.id]).map(viewFromAdded);
+  const all=[...seedViews,...addedViews];
+  const order=L.order[cid]||[];
+  all.sort((a,b)=>{ let ia=order.indexOf(a.id),ib=order.indexOf(b.id); if(ia<0)ia=Infinity; if(ib<0)ib=Infinity; return ia-ib; });
+  return all;
 }
 
-/* ─── rendering ─── */
 function renderAll(){
   updateMeUI();
   renderSections();
-  renderAddedStops();
+  const conts=[...DAY_CONTAINERS, ...ITEMS.filter(i=>i.kind==='section').map(s=>s.id)];
+  conts.forEach(renderContainer);
   renderNotes();
+  renderHeads();
+  renderFootnote();
 }
-
-/* notes under every stop (original + added + section stops) */
-function renderNotes(){
-  $$('.remarks').forEach(box=>{
-    const sid = box.getAttribute('data-remarks-for');
-    const notes = ITEMS.filter(i=>i.kind==='note' && i.parent===sid)
-                       .sort((a,b)=>ts(a.created_at)-ts(b.created_at));
-    const cards = notes.map(n=>`
-      <div class="note-card">
-        <div class="note-head">
-          <div class="note-avatar">${esc(initials(n.author))}</div>
-          <span class="note-author">${esc(n.author||'Someone')}</span>
-          <span class="note-time">${esc(timeAgo(n.created_at))}</span>
-        </div>
-        <div class="note-text">${esc(n.payload.text)}</div>
-        ${mine(n)?`<div class="note-actions">
-          <button class="link-btn" onclick="editNote('${n.id}','${sid}')">Edit</button>
-          <button class="link-btn danger" onclick="deleteNote('${n.id}')">Delete</button>
-        </div>`:''}
-      </div>`).join('');
-    box.innerHTML = cards
-      + `<div class="rform" id="rform-${sid}"></div>`
-      + `<button class="add-remark" onclick="toggleRemark('${sid}')">+ remark</button>`;
+function tools(cid,id){
+  return '<div class="item-tools">'
+    + '<span class="drag-handle" title="Drag to reorder">&#10303;</span>'
+    + '<button class="tool" onclick="moveItem(\''+cid+'\',\''+id+'\',-1)" title="Move up">&#8593;</button>'
+    + '<button class="tool" onclick="moveItem(\''+cid+'\',\''+id+'\',1)" title="Move down">&#8595;</button>'
+    + '<button class="tool" onclick="editItem(\''+cid+'\',\''+id+'\')">Edit</button>'
+    + '<button class="tool danger" onclick="deleteItem(\''+cid+'\',\''+id+'\')">Delete</button>'
+    + '</div>';
+}
+function renderStop(v,cid){
+  return '<div class="stop '+esc(v.klass||'')+'" data-item-id="'+esc(v.id)+'">'
+    + '<div class="stop-time">'+esc(v.time||'')+'</div><div>'
+    + '<div class="stop-name">'+esc(v.name||'Untitled')+(v.tag?' <span class="tag">'+esc(v.tag)+'</span>':'')+'</div>'
+    + (v.note?'<div class="stop-note">'+esc(v.note)+'</div>':'')
+    + ((v.brands&&v.brands.length)?'<div class="brand-list">'+v.brands.map(b=>'<span class="brand-pill">'+esc(b)+'</span>').join('')+'</div>':'')
+    + tools(cid,v.id)
+    + '<div class="remarks" data-remarks-for="'+esc(v.id)+'"></div>'
+    + '</div></div>';
+}
+function renderTransit(v,cid){
+  return '<div class="transit-row" data-item-id="'+esc(v.id)+'">'
+    + '<div class="stop-time">'+esc(v.time||'')+'</div><div>'
+    + '<div class="transit-text"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M14 5l7 7-7 7"/></svg><span class="transit-dots"></span>'+esc(v.text||'')+'</div>'
+    + tools(cid,v.id)
+    + '</div></div>';
+}
+function renderCallout(v,cid){
+  return '<div class="callout" data-item-id="'+esc(v.id)+'">'
+    + (v.title?'<b>'+esc(v.title)+'</b>':'')+esc(v.body||'')
+    + tools(cid,v.id)
+    + '</div>';
+}
+function renderItem(v,cid){ if(v.type==='transit') return renderTransit(v,cid); if(v.type==='callout') return renderCallout(v,cid); return renderStop(v,cid); }
+function renderContainer(cid){
+  const list=document.getElementById('list-'+cid); if(!list) return;
+  const views=orderedViews(cid);
+  list.innerHTML = views.length ? views.map(v=>renderItem(v,cid)).join('') : '<div class="empty-list">Nothing here yet. Add a stop below.</div>';
+  initSortable(cid,list);
+  renderRestore(cid);
+}
+function initSortable(cid,list){
+  if(!window.Sortable) return;
+  if(sortables[cid]){ try{ sortables[cid].destroy(); }catch(e){} }
+  sortables[cid]=window.Sortable.create(list,{
+    handle:'.drag-handle', animation:150, ghostClass:'sortable-ghost', chosenClass:'sortable-chosen',
+    onEnd:function(){ const ids=[].slice.call(list.children).map(c=>c.getAttribute('data-item-id')).filter(Boolean); persistOrder(cid,ids); }
   });
 }
+function renderRestore(cid){
+  const el=document.getElementById('restore-'+cid); if(!el) return;
+  const L=getLayout();
+  const hiddenSeed=(SEED[cid]||[]).filter(o=>L.hidden[o.id]);
+  el.innerHTML = hiddenSeed.length
+    ? hiddenSeed.length+' hidden &middot; '+hiddenSeed.map(o=>'<button onclick="restoreOriginal(\''+o.id+'\')">restore '+esc((o.name||o.text||o.title||'item').slice(0,22))+'</button>').join(' &middot; ')
+    : '';
+}
+function moveItem(cid,id,dir){
+  const ids=orderedViews(cid).map(v=>v.id);
+  const i=ids.indexOf(id); if(i<0) return;
+  const j=i+dir; if(j<0||j>=ids.length) return;
+  const tmp=ids[i]; ids[i]=ids[j]; ids[j]=tmp;
+  persistOrder(cid,ids);
+}
+function deleteItem(cid,id){
+  if(isSeed(id)){ if(confirm('Hide this from the itinerary? You can restore it later.')) hideOriginal(id); }
+  else { if(confirm('Delete this item? This cannot be undone.')){ const notes=ITEMS.filter(i=>i.kind==='note'&&i.parent===id); removeItem(id); notes.forEach(n=>removeItem(n.id)); } }
+}
 
-function toggleRemark(sid, prefill='', editId=''){
-  const slot = $('#rform-'+CSS.escape(sid));
-  if(!slot) return;
+function fieldsFor(kind,cid,v){
+  v=v||{};
+  if(kind==='transit'){
+    return '<div class="field"><label>Label / duration</label><input class="input" id="if-time-'+cid+'" value="'+esc(v.time||'')+'" placeholder="e.g. ~30min"></div>'
+      + '<div class="field"><label>Text</label><input class="input" id="if-text-'+cid+'" value="'+esc(v.text||'')+'" placeholder="e.g. Bluebird, A to B"></div>';
+  }
+  if(kind==='callout'){
+    return '<div class="field"><label>Title</label><input class="input" id="if-title-'+cid+'" value="'+esc(v.title||'')+'" placeholder="e.g. options"></div>'
+      + '<div class="field"><label>Body</label><textarea class="input" id="if-body-'+cid+'" placeholder="The note...">'+esc(v.body||'')+'</textarea></div>';
+  }
+  return '<div class="field-row">'
+    + '<div class="field"><label>Time</label><input class="input" id="if-time-'+cid+'" value="'+esc(v.time||'')+'" placeholder="e.g. 13:00"></div>'
+    + '<div class="field"><label>Style</label><select class="input" id="if-klass-'+cid+'">'
+    + '<option value=""'+(!v.klass?' selected':'')+'>Place</option>'
+    + '<option value="food"'+(v.klass==='food'?' selected':'')+'>Food</option>'
+    + '<option value="shop"'+(v.klass==='shop'?' selected':'')+'>Shop</option>'
+    + '<option value="transit"'+(v.klass==='transit'?' selected':'')+'>Travel</option>'
+    + '</select></div></div>'
+    + '<div class="field-row">'
+    + '<div class="field"><label>Place / name</label><input class="input" id="if-name-'+cid+'" value="'+esc(v.name||'')+'" placeholder="Where to?"></div>'
+    + '<div class="field"><label>Tag (optional)</label><input class="input" id="if-tag-'+cid+'" value="'+esc(v.tag||'')+'" placeholder="e.g. Brunch"></div></div>'
+    + '<div class="field"><label>Note (optional)</label><textarea class="input" id="if-note-'+cid+'" placeholder="Any details...">'+esc(v.note||'')+'</textarea></div>'
+    + '<div class="field"><label>Brand pills (optional, comma-separated)</label><input class="input" id="if-brands-'+cid+'" value="'+esc((v.brands||[]).join(', '))+'" placeholder="e.g. MAGA, Alchemist"></div>';
+}
+function itemFormHTML(cid,kind,editId,seed,v){
+  const kindSel = editId ? '' : '<div class="field"><label>Kind</label><select class="input" id="if-kind-'+cid+'" onchange="changeKind(\''+cid+'\',this.value)">'
+    + '<option value="stop"'+(kind==='stop'?' selected':'')+'>Stop / place</option>'
+    + '<option value="transit"'+(kind==='transit'?' selected':'')+'>Travel hop</option>'
+    + '<option value="callout"'+(kind==='callout'?' selected':'')+'>Note / callout</option>'
+    + '</select></div>';
+  return '<div class="mini-form">'+kindSel+fieldsFor(kind,cid,v)
+    + '<div class="form-actions">'
+    + '<button class="btn btn-primary btn-sm" onclick="submitItem(\''+cid+'\',\''+kind+'\',\''+(editId||'')+'\','+(seed?1:0)+')">'+(editId?'Save changes':'Add')+'</button>'
+    + '<button class="btn btn-ghost btn-sm" onclick="document.getElementById(\'form-'+cid+'\').innerHTML=\'\'">Cancel</button>'
+    + '</div></div>';
+}
+function openItemForm(cid,kind,editId,seed,v){ document.getElementById('form-'+cid).innerHTML=itemFormHTML(cid,kind,editId,seed,v); const f=document.getElementById('if-name-'+cid)||document.getElementById('if-text-'+cid)||document.getElementById('if-title-'+cid); if(f)f.focus(); }
+function changeKind(cid,kind){ openItemForm(cid,kind,'',false,{}); }
+function toggleAdd(cid){ const slot=document.getElementById('form-'+cid); if(slot.innerHTML){ slot.innerHTML=''; return; } if(!ensureName()) return; openItemForm(cid,'stop','',false,{}); }
+function editItem(cid,id){ const v=getView(id); if(!v) return; openItemForm(cid,v.type,id,v.seed,v); }
+function readField(cid,name){ const el=document.getElementById('if-'+name+'-'+cid); return el?el.value.trim():''; }
+function submitItem(cid,kind,editId,seedFlag){
+  let fields;
+  if(kind==='transit'){ const text=readField(cid,'text'); if(!text){ toast('Add the travel text'); return; } fields={ time:readField(cid,'time'), text:text }; }
+  else if(kind==='callout'){ const title=readField(cid,'title'), body=readField(cid,'body'); if(!title&&!body){ toast('Add a title or body'); return; } fields={ title:title, body:body }; }
+  else { const name=readField(cid,'name'); if(!name){ toast('Give the stop a name'); return; } const brands=readField(cid,'brands').split(',').map(s=>s.trim()).filter(Boolean); fields={ time:readField(cid,'time'), klass:readField(cid,'klass'), name:name, tag:readField(cid,'tag'), note:readField(cid,'note'), brands:brands }; }
+  if(editId){ if(seedFlag) editOriginal(editId, fields); else patchItem(editId, Object.assign({itemType:kind}, fields)); }
+  else { addItem('stop', cid, Object.assign({itemType:kind}, fields)); }
+  document.getElementById('form-'+cid).innerHTML='';
+}
+
+function renderNotes(){
+  document.querySelectorAll('.remarks').forEach(box=>{
+    const sid=box.getAttribute('data-remarks-for');
+    const notes=ITEMS.filter(i=>i.kind==='note'&&i.parent===sid).sort((a,b)=>ts(a.created_at)-ts(b.created_at));
+    box.innerHTML = notes.map(n=>'<div class="note-card">'
+        + '<div class="note-head"><div class="note-avatar">'+esc(initials(n.author))+'</div><span class="note-author">'+esc(n.author||'Someone')+'</span><span class="note-time">'+esc(timeAgo(n.created_at))+'</span></div>'
+        + '<div class="note-text">'+esc(n.payload.text)+'</div>'
+        + (mine(n)?'<div class="note-actions"><button class="link-btn" onclick="editNote(\''+n.id+'\',\''+sid+'\')">Edit</button><button class="link-btn danger" onclick="deleteNote(\''+n.id+'\')">Delete</button></div>':'')
+        + '</div>').join('')
+      + '<div class="rform" id="rform-'+sid+'"></div>'
+      + '<button class="add-remark" onclick="toggleRemark(\''+sid+'\')">+ remark</button>';
+  });
+}
+function toggleRemark(sid, prefill, editId){
+  const slot=document.getElementById('rform-'+sid); if(!slot) return;
   if(slot.innerHTML && !prefill && !editId){ slot.innerHTML=''; return; }
-  slot.innerHTML = `
-    <div class="mini-form tight">
-      <div class="field">
-        <textarea class="input" id="rtext-${sid}" placeholder="Add a thought, a question, a heads-up...">${esc(prefill)}</textarea>
-      </div>
-      <div class="form-actions">
-        <button class="btn btn-primary btn-sm" onclick="submitRemark('${sid}','${editId}')">${editId?'Save':'Add remark'}</button>
-        <button class="btn btn-ghost btn-sm" onclick="document.getElementById('rform-'+CSS.escape('${sid}')).innerHTML=''">Cancel</button>
-      </div>
-    </div>`;
-  $('#rtext-'+CSS.escape(sid)).focus();
+  slot.innerHTML='<div class="mini-form tight"><div class="field"><textarea class="input" id="rtext-'+sid+'" placeholder="Add a thought, a question, a heads-up...">'+esc(prefill||'')+'</textarea></div>'
+    + '<div class="form-actions"><button class="btn btn-primary btn-sm" onclick="submitRemark(\''+sid+'\',\''+(editId||'')+'\')">'+(editId?'Save':'Add remark')+'</button>'
+    + '<button class="btn btn-ghost btn-sm" onclick="document.getElementById(\'rform-'+sid+'\').innerHTML=\'\'">Cancel</button></div></div>';
+  document.getElementById('rtext-'+sid).focus();
 }
-function submitRemark(sid, editId){
-  const text = $('#rtext-'+CSS.escape(sid)).value.trim();
-  if(!text){ toast('Write something first'); return; }
-  if(editId) patchItem(editId, { text });
-  else addItem('note', sid, { text });
-}
-function editNote(id, sid){ const n=ITEMS.find(x=>x.id===id); if(n) toggleRemark(sid, n.payload.text, id); }
+function submitRemark(sid, editId){ const text=document.getElementById('rtext-'+sid).value.trim(); if(!text){ toast('Write something first'); return; } if(editId) patchItem(editId,{text:text}); else addItem('note',sid,{text:text}); }
+function editNote(id,sid){ const n=ITEMS.find(x=>x.id===id); if(n) toggleRemark(sid,n.payload.text,id); }
 function deleteNote(id){ if(confirm('Delete this remark?')) removeItem(id); }
 
-/* added stops, grouped under their day/section */
-function renderAddedStops(){
-  $$('.added-stops').forEach(box=>{
-    const parent = box.getAttribute('data-added-for');
-    const stops = ITEMS.filter(i=>i.kind==='stop' && i.parent===parent)
-                       .sort((a,b)=>ts(a.created_at)-ts(b.created_at));
-    box.innerHTML = stops.map(s=>{
-      const p=s.payload, k=p.klass||'';
-      return `
-      <div class="stop ${esc(k)}">
-        <div class="stop-time">${esc(p.time||'')}</div>
-        <div>
-          <div class="stop-name">${esc(p.name||'Untitled stop')} ${p.tag?`<span class="tag">${esc(p.tag)}</span>`:''}</div>
-          ${p.note?`<div class="stop-note">${esc(p.note)}</div>`:''}
-          <div class="added-by">
-            <span class="added-flag">added</span> ${esc(s.author||'someone')} · ${esc(timeAgo(s.created_at))}
-            ${mine(s)?`&nbsp; <button class="link-btn" onclick="editStop('${s.id}')">Edit</button>
-              <button class="link-btn danger" onclick="deleteStop('${s.id}')">Delete</button>`:''}
-          </div>
-          <div class="remarks" data-remarks-for="${esc(s.id)}"></div>
-        </div>
-      </div>`;
-    }).join('');
-  });
-}
-
-function stopFormHTML(parent, editId='', p={}){
-  return `
-    <div class="mini-form">
-      <div class="field-row">
-        <div class="field">
-          <label>Time</label>
-          <input class="input" id="sf-time-${parent}" value="${esc(p.time||'')}" placeholder="e.g. 13:00 / Evening">
-        </div>
-        <div class="field">
-          <label>Type</label>
-          <select class="input" id="sf-klass-${parent}">
-            <option value=""${!p.klass?' selected':''}>Place</option>
-            <option value="food"${p.klass==='food'?' selected':''}>Food</option>
-            <option value="shop"${p.klass==='shop'?' selected':''}>Shop</option>
-            <option value="transit"${p.klass==='transit'?' selected':''}>Transit</option>
-          </select>
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Place / name</label>
-          <input class="input" id="sf-name-${parent}" value="${esc(p.name||'')}" placeholder="Where to?">
-        </div>
-        <div class="field">
-          <label>Tag (optional)</label>
-          <input class="input" id="sf-tag-${parent}" value="${esc(p.tag||'')}" placeholder="e.g. Brunch">
-        </div>
-      </div>
-      <div class="field">
-        <label>Note (optional)</label>
-        <textarea class="input" id="sf-note-${parent}" placeholder="Any details...">${esc(p.note||'')}</textarea>
-      </div>
-      <div class="form-actions">
-        <button class="btn btn-primary btn-sm" onclick="submitStop('${parent}','${editId}')">${editId?'Save stop':'Add stop'}</button>
-        <button class="btn btn-ghost btn-sm" onclick="document.getElementById('form-${parent}').innerHTML=''">Cancel</button>
-      </div>
-    </div>`;
-}
-function toggleAddStop(parent){
-  const slot = $('#form-'+parent);
-  if(slot.innerHTML){ slot.innerHTML=''; return; }
-  if(!ensureName()) return;
-  slot.innerHTML = stopFormHTML(parent);
-  $('#sf-name-'+parent).focus();
-}
-function submitStop(parent, editId){
-  const g=id=>$('#sf-'+id+'-'+parent);
-  const payload = {
-    time: g('time').value.trim(),
-    klass: g('klass').value,
-    name: g('name').value.trim(),
-    tag: g('tag').value.trim(),
-    note: g('note').value.trim(),
-  };
-  if(!payload.name){ toast('Give the stop a name'); return; }
-  if(editId) patchItem(editId, payload);
-  else addItem('stop', parent, payload);
-  $('#form-'+parent).innerHTML='';
-}
-function editStop(id){
-  const s=ITEMS.find(x=>x.id===id); if(!s) return;
-  const slot=$('#form-'+s.parent); if(!slot) return;
-  slot.innerHTML = stopFormHTML(s.parent, id, s.payload);
-  $('#sf-name-'+s.parent).focus();
-}
-function deleteStop(id){ if(confirm('Delete this stop and its remarks?')){ const ch=ITEMS.filter(i=>i.parent===id); removeItem(id); ch.forEach(c=>removeItem(c.id)); } }
-
-/* new sections (extra day-style blocks) */
 function renderSections(){
-  const wrap = $('#addedSections');
-  const secs = ITEMS.filter(i=>i.kind==='section').sort((a,b)=>ts(a.created_at)-ts(b.created_at));
-  wrap.innerHTML = secs.map((s,idx)=>{
+  const wrap=document.getElementById('addedSections');
+  const secs=ITEMS.filter(i=>i.kind==='section').sort((a,b)=>ts(a.created_at)-ts(b.created_at));
+  wrap.innerHTML=secs.map((s,idx)=>{
     const p=s.payload;
-    return `
-    <div class="day">
-      <div class="day-rail">
-        <div class="day-num">${esc(p.num || ('Extra '+(idx+1)))}</div>
-        <div class="day-date">${esc(p.date||'')}</div>
-        <div class="day-line"></div>
-      </div>
-      <div class="day-body">
-        <div class="day-title">${esc(p.title||'New section')}</div>
-        ${p.narrative?`<p class="day-narrative">${esc(p.narrative)}</p>`:''}
-        <div class="added-by" style="margin-bottom:14px">
-          <span class="added-flag">section</span> ${esc(s.author||'someone')} · ${esc(timeAgo(s.created_at))}
-          ${mine(s)?`&nbsp; <button class="link-btn" onclick="editSection('${s.id}')">Edit</button>
-            <button class="link-btn danger" onclick="deleteSection('${s.id}')">Delete</button>`:''}
-        </div>
-        <div class="added-stops" data-added-for="${esc(s.id)}"></div>
-        <div class="form-slot" id="form-${esc(s.id)}"></div>
-        <button class="add-stop-btn" onclick="toggleAddStop('${esc(s.id)}')">+ Add a stop to this section</button>
-      </div>
-    </div>`;
+    return '<div class="day"><div class="day-rail"><div class="day-num">'+esc(p.num||('Extra '+(idx+1)))+'</div><div class="day-date">'+esc(p.date||'')+'</div><div class="day-line"></div></div>'
+      + '<div class="day-body"><div class="day-title">'+esc(p.title||'New section')+'</div>'
+      + (p.narrative?'<p class="day-narrative">'+esc(p.narrative)+'</p>':'')
+      + '<div class="added-by" style="margin-bottom:14px"><span class="added-flag">section</span> '+esc(s.author||'someone')+' &middot; '+esc(timeAgo(s.created_at))+(mine(s)?' &nbsp; <button class="link-btn" onclick="editSection(\''+s.id+'\')">Edit</button> <button class="link-btn danger" onclick="deleteSection(\''+s.id+'\')">Delete</button>':'')+'</div>'
+      + '<div class="day-list" id="list-'+s.id+'"></div>'
+      + '<div class="hidden-restore" id="restore-'+s.id+'"></div>'
+      + '<div class="form-slot" id="form-'+s.id+'"></div>'
+      + '<button class="add-stop-btn" onclick="toggleAdd(\''+s.id+'\')">+ Add to this section</button>'
+      + '</div></div>';
   }).join('');
 }
-
-function sectionFormHTML(editId='', p={}){
-  return `
-    <div class="mini-form">
-      <div class="field-row">
-        <div class="field">
-          <label>Label</label>
-          <input class="input" id="secf-num" value="${esc(p.num||'')}" placeholder="e.g. Pre-trip / Extra">
-        </div>
-        <div class="field">
-          <label>Date (optional)</label>
-          <input class="input" id="secf-date" value="${esc(p.date||'')}" placeholder="e.g. Tue, Jun 23">
-        </div>
-      </div>
-      <div class="field">
-        <label>Section title</label>
-        <input class="input" id="secf-title" value="${esc(p.title||'')}" placeholder="e.g. Packing & to-buy list">
-      </div>
-      <div class="field">
-        <label>Intro (optional)</label>
-        <textarea class="input" id="secf-narr" placeholder="What's this section for?">${esc(p.narrative||'')}</textarea>
-      </div>
-      <div class="form-actions">
-        <button class="btn btn-primary btn-sm" onclick="submitSection('${editId}')">${editId?'Save section':'Add section'}</button>
-        <button class="btn btn-ghost btn-sm" onclick="document.getElementById('form-new-section').innerHTML=''">Cancel</button>
-      </div>
-    </div>`;
+function sectionFormHTML(editId,p){
+  p=p||{};
+  return '<div class="mini-form"><div class="field-row">'
+    + '<div class="field"><label>Label</label><input class="input" id="secf-num" value="'+esc(p.num||'')+'" placeholder="e.g. Pre-trip"></div>'
+    + '<div class="field"><label>Date (optional)</label><input class="input" id="secf-date" value="'+esc(p.date||'')+'" placeholder="e.g. Tue, Jun 23"></div></div>'
+    + '<div class="field"><label>Section title</label><input class="input" id="secf-title" value="'+esc(p.title||'')+'" placeholder="e.g. Packing & to-buy list"></div>'
+    + '<div class="field"><label>Intro (optional)</label><textarea class="input" id="secf-narr" placeholder="What is this section for?">'+esc(p.narrative||'')+'</textarea></div>'
+    + '<div class="form-actions"><button class="btn btn-primary btn-sm" onclick="submitSection(\''+(editId||'')+'\')">'+(editId?'Save section':'Add section')+'</button>'
+    + '<button class="btn btn-ghost btn-sm" onclick="document.getElementById(\'form-new-section\').innerHTML=\'\'">Cancel</button></div></div>';
 }
-function toggleAddSection(){
-  const slot=$('#form-new-section');
+function toggleAddSection(){ const slot=document.getElementById('form-new-section'); if(slot.innerHTML){ slot.innerHTML=''; return; } if(!ensureName()) return; slot.innerHTML=sectionFormHTML('',{}); document.getElementById('secf-title').focus(); }
+function submitSection(editId){
+  const payload={ num:document.getElementById('secf-num').value.trim(), date:document.getElementById('secf-date').value.trim(), title:document.getElementById('secf-title').value.trim(), narrative:document.getElementById('secf-narr').value.trim() };
+  if(!payload.title){ toast('Give the section a title'); return; }
+  if(editId) patchItem(editId,payload); else addItem('section',null,payload);
+  document.getElementById('form-new-section').innerHTML='';
+}
+function editSection(id){ const s=ITEMS.find(x=>x.id===id); if(!s) return; const slot=document.getElementById('form-new-section'); slot.innerHTML=sectionFormHTML(id,s.payload); slot.scrollIntoView({behavior:'smooth',block:'center'}); document.getElementById('secf-title').focus(); }
+function deleteSection(id){ if(!confirm('Delete this whole section, its stops and remarks?')) return; const stops=ITEMS.filter(i=>i.kind==='stop'&&i.parent===id); const noteIds=ITEMS.filter(i=>i.kind==='note'&&stops.some(st=>st.id===i.parent)).map(i=>i.id); removeItem(id); stops.forEach(s=>removeItem(s.id)); noteIds.forEach(n=>removeItem(n)); }
+
+function renderHeads(){
+  DAY_CONTAINERS.forEach(function(cid){
+    const list=document.getElementById('list-'+cid); if(!list) return;
+    const body=list.closest('.day-body'); if(!body) return;
+    const titleEl=body.querySelector('.day-title');
+    const narrEl=body.querySelector('.day-narrative');
+    if(!HEAD_DEFAULTS[cid]) HEAD_DEFAULTS[cid]={ title:titleEl?titleEl.textContent:'', narrative:narrEl?narrEl.textContent:'' };
+    const meta=getLayout().meta[cid];
+    if(titleEl) titleEl.textContent = (meta&&meta.title!=null)?meta.title:HEAD_DEFAULTS[cid].title;
+    if(narrEl){ const t=(meta&&meta.narrative!=null)?meta.narrative:HEAD_DEFAULTS[cid].narrative; narrEl.textContent=t; narrEl.style.display=t?'':'none'; }
+    if(!document.getElementById('headform-'+cid)){
+      const btn=document.createElement('button'); btn.className='head-edit'; btn.textContent='\u270E edit heading'; btn.setAttribute('onclick',"editHead('"+cid+"')");
+      const slot=document.createElement('div'); slot.className='form-slot'; slot.id='headform-'+cid;
+      const anchor = narrEl||titleEl;
+      anchor.parentNode.insertBefore(btn, anchor.nextSibling);
+      btn.parentNode.insertBefore(slot, btn.nextSibling);
+    }
+  });
+}
+function editHead(cid){
+  const slot=document.getElementById('headform-'+cid); if(!slot) return;
   if(slot.innerHTML){ slot.innerHTML=''; return; }
   if(!ensureName()) return;
-  slot.innerHTML = sectionFormHTML();
-  $('#secf-title').focus();
+  const meta=getLayout().meta[cid]||{};
+  const d=HEAD_DEFAULTS[cid]||{title:'',narrative:''};
+  const title=(meta.title!=null)?meta.title:d.title;
+  const narr=(meta.narrative!=null)?meta.narrative:d.narrative;
+  slot.innerHTML='<div class="mini-form">'
+    +'<div class="field"><label>Day title</label><input class="input" id="hf-title-'+cid+'" value="'+esc(title)+'"></div>'
+    +'<div class="field"><label>Intro paragraph</label><textarea class="input" id="hf-narr-'+cid+'">'+esc(narr)+'</textarea></div>'
+    +'<div class="form-actions"><button class="btn btn-primary btn-sm" onclick="saveHead(\''+cid+'\')">Save heading</button>'
+    +'<button class="btn btn-ghost btn-sm" onclick="document.getElementById(\'headform-'+cid+'\').innerHTML=\'\'">Cancel</button>'
+    +'<button class="link-btn" style="margin-left:auto" onclick="resetHead(\''+cid+'\')">Reset to original</button></div></div>';
+  document.getElementById('hf-title-'+cid).focus();
 }
-function submitSection(editId){
-  const payload = {
-    num: $('#secf-num').value.trim(),
-    date: $('#secf-date').value.trim(),
-    title: $('#secf-title').value.trim(),
-    narrative: $('#secf-narr').value.trim(),
-  };
-  if(!payload.title){ toast('Give the section a title'); return; }
-  if(editId) patchItem(editId, payload);
-  else addItem('section', null, payload);
-  $('#form-new-section').innerHTML='';
-}
-function editSection(id){
-  const s=ITEMS.find(x=>x.id===id); if(!s) return;
-  const slot=$('#form-new-section');
-  slot.innerHTML = sectionFormHTML(id, s.payload);
-  slot.scrollIntoView({behavior:'smooth',block:'center'});
-  $('#secf-title').focus();
-}
-function deleteSection(id){
-  if(!confirm('Delete this whole section, its stops and remarks?')) return;
-  const stops = ITEMS.filter(i=>i.parent===id);
-  const noteIds = ITEMS.filter(i=>stops.some(st=>st.id===i.parent)).map(i=>i.id);
-  removeItem(id);
-  stops.forEach(s=>removeItem(s.id));
-  noteIds.forEach(n=>removeItem(n));
-}
+function saveHead(cid){ setMeta(cid,{ title:document.getElementById('hf-title-'+cid).value.trim(), narrative:document.getElementById('hf-narr-'+cid).value.trim() }); document.getElementById('headform-'+cid).innerHTML=''; }
+function resetHead(cid){ clearMeta(cid); const s=document.getElementById('headform-'+cid); if(s) s.innerHTML=''; }
 
-/* close modal on backdrop click */
-$('#nameModal').addEventListener('click', e=>{ if(e.target.id==='nameModal') closeNameModal(); });
+function renderFootnote(){
+  const fn=document.querySelector('.footnote'); if(!fn) return;
+  const b=fn.querySelector('b'); const p=fn.querySelector('p');
+  if(!FOOT_DEFAULT) FOOT_DEFAULT={ title:b?b.textContent:'', body:p?p.textContent:'' };
+  const meta=getLayout().meta['footnote'];
+  if(b) b.textContent=(meta&&meta.title!=null)?meta.title:FOOT_DEFAULT.title;
+  if(p) p.textContent=(meta&&meta.body!=null)?meta.body:FOOT_DEFAULT.body;
+  if(!document.getElementById('footform')){
+    const btn=document.createElement('button'); btn.className='head-edit'; btn.style.margin='12px 0 0'; btn.textContent='\u270E edit this section'; btn.setAttribute('onclick','editFootnote()');
+    const slot=document.createElement('div'); slot.className='form-slot'; slot.id='footform';
+    fn.appendChild(btn); fn.appendChild(slot);
+  }
+}
+function editFootnote(){
+  const slot=document.getElementById('footform'); if(!slot) return;
+  if(slot.innerHTML){ slot.innerHTML=''; return; }
+  if(!ensureName()) return;
+  const meta=getLayout().meta['footnote']||{};
+  const d=FOOT_DEFAULT||{title:'',body:''};
+  const title=(meta.title!=null)?meta.title:d.title;
+  const body=(meta.body!=null)?meta.body:d.body;
+  slot.innerHTML='<div class="mini-form" style="margin-top:12px">'
+    +'<div class="field"><label>Section title</label><input class="input" id="ff-title" value="'+esc(title)+'"></div>'
+    +'<div class="field"><label>Body</label><textarea class="input" id="ff-body">'+esc(body)+'</textarea></div>'
+    +'<div class="form-actions"><button class="btn btn-primary btn-sm" onclick="saveFootnote()">Save</button>'
+    +'<button class="btn btn-ghost btn-sm" onclick="document.getElementById(\'footform\').innerHTML=\'\'">Cancel</button>'
+    +'<button class="link-btn" style="margin-left:auto" onclick="resetFootnote()">Reset to original</button></div></div>';
+  document.getElementById('ff-title').focus();
+}
+function saveFootnote(){ setMeta('footnote',{ title:document.getElementById('ff-title').value.trim(), body:document.getElementById('ff-body').value.trim() }); document.getElementById('footform').innerHTML=''; }
+function resetFootnote(){ clearMeta('footnote'); const s=document.getElementById('footform'); if(s) s.innerHTML=''; }
 
-/* ─── boot ─── */
+document.getElementById('nameModal').addEventListener('click', function(e){ if(e.target.id==='nameModal') closeNameModal(); });
+
 async function boot(){
-  const dot=$('#modeDot'), txt=$('#modeText');
+  const dot=document.getElementById('modeDot'), txt=document.getElementById('modeText');
   if(SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase){
     try{
       sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      shared = true;
-      dot.className='mode-dot shared';
-      txt.textContent='Shared · everyone sees this live';
+      shared = true; dot.className='mode-dot shared'; txt.textContent='Shared · everyone sees this live';
       await refresh();
-      sb.channel('rt-'+BOARD_ID)
-        .on('postgres_changes', { event:'*', schema:'public', table:TABLE, filter:'board_id=eq.'+BOARD_ID }, ()=>refresh())
-        .subscribe();
-    }catch(err){
-      console.error(err); shared=false;
-      dot.className='mode-dot local'; txt.textContent='Local only · sync setup failed';
-      loadLocal(); renderAll();
-    }
-  } else {
-    shared=false;
-    dot.className='mode-dot local';
-    txt.textContent='Local only · saved on this device';
-    loadLocal(); renderAll();
-  }
-  if(!ME) setTimeout(openNameModal, 600);
+      sb.channel('rt-'+BOARD_ID).on('postgres_changes',{event:'*',schema:'public',table:TABLE,filter:'board_id=eq.'+BOARD_ID},function(){ refresh(); }).subscribe();
+    }catch(err){ console.error(err); shared=false; dot.className='mode-dot local'; txt.textContent='Local only · sync setup failed'; loadLocal(); renderAll(); }
+  } else { shared=false; dot.className='mode-dot local'; txt.textContent='Local only · saved on this device'; loadLocal(); renderAll(); }
+  if(!ME) setTimeout(openNameModal,600);
 }
 boot();
 </script>
